@@ -11,13 +11,15 @@ def getData(start_date: str, end_date: str, API_KEY, company: str):
 
 def tabelarizeData(data):
     data['symbol'] = {}
-    for day in data['historical']:
-        # print(f"{day['date']} : {day['close']} \n")
-        data['symbol'].update({day['date'] : day['close']})
-    df = pd.DataFrame(columns=['Date', 'Value'])
-    df['Date'] =  data['symbol'].keys()
-    df['Value'] =  data['symbol'].values()
-
+    try:
+        for day in data["historical"]:
+            # print(f"{day['date']} : {day['close']} \n")
+            data['symbol'].update({day['date'] : day['close']})
+        df = pd.DataFrame(columns=['Date', 'Value'])
+        df['Date'] =  data['symbol'].keys()
+        df['Value'] =  data['symbol'].values()
+    except:
+        return None
     return df
 
 

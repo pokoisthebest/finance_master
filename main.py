@@ -11,7 +11,7 @@ def main() -> int:
     "CDPROJEKT" : "CDR",
     "CYFRPLSAT" : "CPS",
     "DINOPL" : "DNP",
-    "JSW" : "JSW",
+    "JSW" : "JSW.WA",
     "KGHM" : "KGH",
     "KRUK" : "KRU",
     "KETY" : "KTY",
@@ -28,10 +28,12 @@ def main() -> int:
 }
     start_date = "2022-01-28"
     end_date = "2023-03-17"
-    Assecopol = hd.getData(start_date, end_date, API_KEY, wig20["ASSECOPOL"])
-    Assecopol = hd.tabelarizeData(Assecopol)
-    print(Assecopol)
-    
+    # Assecopol = hd.getData(start_date, end_date, API_KEY, wig20["ASSECOPOL"])
+    # Assecopol = hd.tabelarizeData(Assecopol)
+    # print(Assecopol)
+    wig20_tables = [key for key in wig20]
+    wig20_tables = [hd.tabelarizeData(hd.getData(start_date, end_date, API_KEY, wig20[company])) for company in wig20_tables]
+    [print(company) for company in wig20_tables]
     return 0
 
 
