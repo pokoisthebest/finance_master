@@ -1,0 +1,2 @@
+date range: 01/01/2015 - 23/06/2024
+source: https://pl.investing.com/indices/wig-20-components
